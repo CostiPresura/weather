@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API app</title>
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Indie+Flower&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  
+    
+  <div class="container">
+    <h1>Weather APP</h1>
+    
+
+    <form action="/" method="GET" id="weather-form">
+    <label for="city">Insert your city: <p id="english">*english version*</p></label>
+    <input type="text" id="city" name="city" required>
+
+
+    <button type="submit">Search</button>
+    </form>
+
+    <% if (locals.data) { %>
+        <div id="weather-data">
+          <div class="bubble">
+          <p>City: <%= locals.data.name %></p>
+          </div>
+          <div class="bubble">
+          <p>Temperature: <%= (locals.data.main.temp - 273.15).toFixed(2) %>°C</p>
+          </div>
+          <div class="bubble">
+          <p>Description: <%= locals.data.weather[0].description %></p>
+          </div>
+        </div>
+      <% } else { %>
+        <p>No weather data available.</p>
+      <% } %>
+  </div>
+
+</body>
+</html>
